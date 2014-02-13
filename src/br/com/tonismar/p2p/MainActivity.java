@@ -1,5 +1,8 @@
 package br.com.tonismar.p2p;
 
+import br.com.tonismar.p2p.DeviceListFragment.DeviceActionListener;
+import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.net.wifi.p2p.WifiP2pManager.ChannelListener;
@@ -11,6 +14,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.view.Menu;
+import android.view.MenuInflater;
 
 public class MainActivity extends Activity implements ChannelListener, DeviceActionListener {
 	
@@ -43,7 +47,8 @@ public class MainActivity extends Activity implements ChannelListener, DeviceAct
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+    	MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_items, menu);
         return true;
     }
     
@@ -61,13 +66,41 @@ public class MainActivity extends Activity implements ChannelListener, DeviceAct
     }
     
     public void resetData() {
-    	DeviceListFragment fragmentList = (DeviceListFragment) getFragmentManager()
-    			.findFragmentById(R.id.frag_list);
     	DeviceDetailFragment fragmentDetails = (DeviceDetailFragment) getFragmentManager()
     			.findFragmentById(R.id.frag_detail);
     	if (fragmentDetails != null) {
     		fragmentDetails.resetViews();
     	}
     }
+
+	@Override
+	public void showDetails(WifiP2pDevice device) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cancelDisconnect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void connect(WifiP2pConfig config) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void disconnect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onChannelDisconnected() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }
